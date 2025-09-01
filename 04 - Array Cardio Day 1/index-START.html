@@ -59,7 +59,7 @@
 
     console.log(inventors.map(item => item.passed - item.year).reduce((sum, item) => sum += item, 0));
 
-    // 5. Sort the inventors by years lived
+    // 5. Sort the inventors by years lived        
 
     console.log(inventors.sort((a, b) => (a.passed - a.year) - (b.passed - b.year)));
 
@@ -84,17 +84,30 @@
 
     console.log(people.sort());
 
+    const alpha = people.sort((lastOne, nextOne) => {
+      const [aLast, aFirst] = lastOne.split(', ');
+      const [bLast, bFirst] = nextOne.split(', ');
+      return aLast > bLast ? 1 : -1;
+      console.log(alpha);
+    
+    });
+
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
-    console.log(data.sort());
+    const transportation = data.reduce((obj, item) => {
+      if(!obj[item]) {
+        obj[item] = 0;
+      }
+      obj[item]++;
+      return obj;
+    }, {});
 
-    console.log("bike: " + data.filter(item => item === "bike").reduce((sum, item) => sum += item, 0));
-    console.log("car: " + data.filter(item => item === "car").reduce((sum, item) => sum += item, 0));
-    console.log("truck: " + data.filter(item => item === "truck").reduce((sum, item) => sum += item, 0));
-    console.log("van: " + data.filter(item => item === "van").reduce((sum, item) => sum += item, 0));
-    console.log("walk: " + data.filter(item => item === "walk").reduce((sum, item) => sum += item, 0));
+    console.log(transportation);
+      
+      
+      
 
   </script>
 </body>
